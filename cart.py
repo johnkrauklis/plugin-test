@@ -10,13 +10,10 @@ def calculate_total(items, discount_percent=0):
     for name, price, quantity in items:
         subtotal += price * quantity
 
-    # BUG: tax is calculated on the pre-discount subtotal, then the discount
-    # is applied to the taxed amount. Customers get taxed on money they
-    # never actually spent. Should discount first, then tax.
-    tax = subtotal * TAX_RATE
-    total_with_tax = subtotal + tax
-    discount_amount = total_with_tax * (discount_percent / 100)
-    total = total_with_tax - discount_amount
+    discount_amount = subtotal * (discount_percent / 100)
+    discounted_subtotal = subtotal - discount_amount
+    tax = discounted_subtotal * TAX_RATE
+    total = discounted_subtotal + tax
 
     return round(total, 2)
 
