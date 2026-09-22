@@ -10,11 +10,10 @@ logic lives directly in two functions.
 **calculate_total()** — the only place discount and tax math happens for a
 general cart. Takes an optional flat discount percentage.
 
-**apply_member_discount()** — a separate, hardcoded 10% discount path for
-members. Duplicates the tax/discount arithmetic from calculate_total() rather
-than calling it.
+**apply_member_discount()** — calls calculate_total() with a hardcoded 10%
+discount for members.
 
 ## Boundaries
 
-There is no shared discount logic. Any change to how tax or discounts are
-calculated has to be made in both functions by hand.
+All discount and tax math is centralized in calculate_total(). Both call
+sites share the same logic, including the known pre-discount-tax bug.
