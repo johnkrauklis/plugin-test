@@ -16,4 +16,4 @@ discount for members.
 ## Boundaries
 
 All discount and tax math is centralized in calculate_total(). Both call
-sites share the same logic, including the known pre-discount-tax bug.
+sites share the same logic, so a fix in one place applies everywhere.
