@@ -4,7 +4,7 @@
 
 ```
 run:  python3 cart.py
-test: (none yet)
+test: python3 -m unittest -v
 ```
 
 ## Style
